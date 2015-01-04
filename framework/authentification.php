@@ -65,7 +65,7 @@
                 return false;
             }
             
-            if (Authentification::encoder($motDePasse, $res["creation"]) != $res["mot_de_passe"]) {
+            if (Authentification::encoder($motDePasse, $res[self::getInstance()->authColSel]) != $res[self::getInstance()->authColMotDePasse]) {
                 return false;
             }
             

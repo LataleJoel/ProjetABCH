@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Coup de pouce</title>
+        <title>Gestion FM CRE</title>
         <meta charset="utf-8">
         <?php Page::enteteCSS(); ?>  
+        <?php Page::inclureJS(); ?>  
     </head>
     
     <body>
@@ -17,7 +18,6 @@
         <pre><?php print_r(Application::getPage());?></pre>
         <h3>POST</h3>
         <pre><?php print_r($_POST);?></pre>  
-        <?php Page::inclureJS(); ?>  
     </body>
 </html>
 

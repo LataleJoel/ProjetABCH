@@ -70,7 +70,8 @@
          */
         public static function enteteCSS() {
             foreach (self::$_instance->CSS as $fichierCSS) {
-                ?> <link rel="stylesheet" type="text/css" href="<?php echo $fichierCSS; ?>"> <?php
+                ?><link rel="stylesheet" type="text/css" href="<?php echo $fichierCSS; ?>"> 
+        <?php
             }
         }
 
@@ -93,7 +94,8 @@
          */
         public static function inclureJS() {
             foreach (self::$_instance->scripts as $fichierScript) {
-                ?> <script type="text/javascript" src="<?php echo $fichierScript ?>"></script> <?php
+                ?><script type="text/javascript" src="<?php echo $fichierScript ?>"></script> 
+        <?php
             }
         }
 

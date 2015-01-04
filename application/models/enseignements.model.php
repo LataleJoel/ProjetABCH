@@ -1,14 +1,21 @@
 <?php
     defined('__COUPDEPOUCE__') or die('Acces interdit');
 
-    class DomainesModel extends Model {
+    class UtilisateursModel extends Model {
         
-        public function sauver($libelle) {
-            $sql = "INSERT INTO domaines SET libelle = :libelle, annee = :annee";
+        public function sauver($nom, $prenom, $admin, $statut, $login, $password) {
+            $sql = "INSERT INTO utilisateurs SET nom = :nom, prenom = :prenom, admin = :admin, statut = :statut,"
+                    . " login = :login, password = :password, creation = :creation";
             $req = $this->db->prepare($sql);
             
-            $req->bindValue(':libelle', $libelle);
-            $req->bindValue(':annee', Application::getConfig()->annee_courante);
+            $creation = date('Y-m-d H:i:s');
+            $req->bindValue(':nom', strtoupper($nom));  
+            $req->bindValue(':prenom', ucfirst($prenom));
+            $req->bindValue(':admin', $admin);  
+            $req->bindValue(':statut', $statut);
+            $req->bindValue(':login', $login);      
+            $req->bindValue(':password', Authentification::encoder($password, $creation));      
+            $req->bindValue(':creation', $creation);
             
             try {
                 $req->execute();
@@ -30,19 +37,6 @@
             }
             return $req->fetchAll(PDO::FETCH_ASSOC);
         }  
-        
-        public function supprimer($id){
-            $sql = "DELETE FROM domaines WHERE id = :id";
-            $req = $this->db->prepare($sql);
-            
-            $req->bindValue(':id', $id);
-            
-            try {
-                $req->execute();
-            } catch (PDOException $ex) {
-                throw new Erreur("Erreur SQL ".$ex->getMessage());
-            }
-        }
     }
     
     
