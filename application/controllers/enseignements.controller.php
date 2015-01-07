@@ -1,6 +1,7 @@
 <?php
     defined('__COUPDEPOUCE__') or die('Acces interdit');
     Application::useModele('enseignements');
+    Application::useModele('domaines');
     Application::useModele('sections');
     
     class EnseignementsController extends Controller {
@@ -52,7 +53,7 @@
         
         private function _formulaire($action) {
             $page = Application::getPage();
-            $page->setTemplate('dev');
+            $page->setTemplate('application');
             $page->setVue('editer_enseignement');
             Page::ajouterCSS("bootstrap.min");
             Page::ajouterCSS("bootstrap-theme.min");
@@ -63,6 +64,8 @@
             $page->action = $action;
             $modelSections = new SectionsModel();
             $page->listeSections = $modelSections->lister();  
+            $modelDomaines = new DomainesModel();
+            $page->listeDomaines = $modelDomaines->lister();
             
             if (is_null(HTTPHelper::post('envoyer'))) {
                 return;
@@ -89,15 +92,15 @@
             }
             
             
-            $model = new UtilisateursModel();  
+            /*$model = new UtilisateursModel();  
             switch($page->action) {
                 case 'ajouter':
                     $model->sauver($page->nom, $page->prenom, 0, $page->statut, $login, 'toto');
-                    break;
+                    break;*/
                 /*case 'editer':
                     $modelCoupsDePouce->modifier($page->id, $page->titre, $page->accroche, $page->description, DateTime::createFromFormat("d/m/Y H:i", $page->date), $page->salle, $page->places, $page->formation);
-                    break;*/
-            }
+                    break;
+            }*/
                    
             //HTTPHelper::rediriger("?controller=coups_de_pouce&action=lister");       
         }

@@ -3,25 +3,25 @@
  ?>
 
 
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-primary">
-            <div class="panel-heading"><?php
-                    switch($this->action) {
-                        case "ajouter" : 
-                            ?> AJOUTER UN DOMAINE <?php
-                            break;
-                        case "editer" : 
-                            ?> Editer un domaine <?php
-                            break;
-                    }
-                    ?></div>
-            <div class="panel-body">
+<div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <?php
+            switch($this->action) {
+                case "ajouter" : 
+                    ?> AJOUTER UN DOMAINE <?php
+                    break;
+                    case "editer" : 
+                    ?> EDITER UN DOMAINE <?php
+                    break;
+            }
+            ?>
+        </div>
+        <div class="panel-body">
             <form id="clearingForm" class="form-horizontal" method="POST" action="?controller=domaines&action=<?php echo $this->action;?>">
                 <?php FormHelper::cleCSRF(); ?>
-                <p class="erreur-form"> 
-                    <?php echo $this->formMessage;?>
-                </p>
-                <input type="hidden" name="id" value="<?php echo $this->id;?>" />    
+                <p class="erreur-form"><?php echo $this->formMessage;?></p>
+                <input type="hidden" name="id" value="<?php echo $this->id;?>" />  
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="libelle">Libellé</label>
                     <div class="col-sm-6">
@@ -34,9 +34,9 @@
                     </div>
                 </div>
             </form>   
-            </div>
-            </div>
         </div>
+    </div>
+</div>
 
 
 

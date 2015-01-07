@@ -1,7 +1,7 @@
 <?php
     defined('__COUPDEPOUCE__') or die('Acces interdit');
 
-    class UtilisateursModel extends Model {
+    class EnseignementsModel extends Model {
         
         public function sauver($nom, $prenom, $admin, $statut, $login, $password) {
             $sql = "INSERT INTO utilisateurs SET nom = :nom, prenom = :prenom, admin = :admin, statut = :statut,"
