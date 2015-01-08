@@ -25,6 +25,7 @@
             Page::ajouterCSS("bootstrap-theme.min");
             Page::ajouterCSS("bootstrap.min");
             Page::ajouterScript("jquery.min");
+            Page::ajouterScript("ckeditor/ckeditor");
         }
         
         public function creAction() {
@@ -37,5 +38,6 @@
             Page::ajouterCSS("bootstrap-theme.min");
             Page::ajouterCSS("bootstrap.min");
             Page::ajouterScript("jquery.min");
+            Page::ajouterScript("ckeditor/ckeditor");
         }
     }
